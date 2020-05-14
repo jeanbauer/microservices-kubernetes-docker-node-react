@@ -11,21 +11,20 @@ spec:
     metadata:
       labels:
         app: posts
-    spec: 
+    spec:
       containers:
         - name: posts
           image: jeanbauer/posts
 ---
-
 apiVersion: v1
 kind: Service
 metadata:
   name: posts-clusterip-srv
 spec:
   selector:
-    app: posts-clusterip
+    app: posts
   ports:
-    - name: posts-clusterip
+    - name: posts
       protocol: TCP
       port: 4000
       targetPort: 4000
