@@ -8,3 +8,21 @@
 # Deployment Job
 - If some pod fails Deployment will back up it.
 - If we update the code of one Container the Deployment will do the versioning for us.
+
+
+`k apply -f posts-srv.yaml`
+> service/posts-srv created
+
+`k get services`
+
+```
+NAME         TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
+kubernetes   ClusterIP   xxx             <none>        443/TCP          126m
+posts-srv    NodePort    xxxx            <none>        4000:31858/TCP   11s
+```
+
+How to access the k8s newest service (node port) that we just created?
+
+`k describe services posts-srv` to get the IP (or copy from prev command)
+
+and go to `http://localhost:<IP>/posts`
