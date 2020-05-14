@@ -1,32 +1,32 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useState } from 'react'
+import axios from 'axios'
 
 export default () => {
-  const [title, setTitle] = useState('');
+  const [title, setTitle] = useState('')
 
-  const onSubmit = async event => {
-    event.preventDefault();
+  const onSubmit = async (event) => {
+    event.preventDefault()
 
-    await axios.post('http://localhost:4000/posts', {
-      title
-    });
+    await axios.post('http://posts.com/posts', {
+      title,
+    })
 
-    setTitle('');
-  };
+    setTitle('')
+  }
 
   return (
     <div>
       <form onSubmit={onSubmit}>
-        <div className="form-group">
+        <div className='form-group'>
           <label>Title</label>
           <input
             value={title}
-            onChange={e => setTitle(e.target.value)}
-            className="form-control"
+            onChange={(e) => setTitle(e.target.value)}
+            className='form-control'
           />
         </div>
-        <button className="btn btn-primary">Submit</button>
+        <button className='btn btn-primary'>Submit</button>
       </form>
     </div>
-  );
-};
+  )
+}
