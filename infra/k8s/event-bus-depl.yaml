@@ -15,3 +15,18 @@ spec:
       containers:
         - name: event-bus
           image: jeanbauer/event-bus
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: event-bus-srv
+spec:
+  selector:
+    app: event-bus
+  type: ClusterIP # by default it adds ClusterIP so this is optional.
+  ports:
+    - name: event-bus
+      protocol: TCP
+      port: 4005
+      targetPort: 4005
