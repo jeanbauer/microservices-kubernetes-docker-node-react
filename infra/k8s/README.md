@@ -32,3 +32,12 @@ and go to `http://localhost:<IP>/posts`
 
 There is people that creates a separated file to each cluster IP service, but since most of the relationships between Service and POD are 1:1 this repo uses the same POD file (Deployment) separated with `---`.
 
+### How Pods communicate with services?
+
+```
+[Pod]                                                  [Pod]
+<Posts>              <-- http://event-bus-srv -->      <Event Bus>
+<posts-clusterip-srv>                                  <event-bus-srv> (cluster IP service)
+```
+
+> If the POD needs to make request to specific port then add, e.g.: `http://event-bus-srv:4005`
